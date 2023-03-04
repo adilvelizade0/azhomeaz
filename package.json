@@ -1,0 +1,41 @@
+{
+  "name": "azhomeaz",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-collapse": "^5.1.1",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.7.1",
+    "react-images-upload": "^1.2.8",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-modern-drawer": "^1.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
+    "react-slick": "^0.29.0",
+    "react-tooltip": "^5.8.3",
+    "reactjs-bottom-navigation": "^1.0.4",
+    "reactjs-popup": "^2.0.5",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
+    "rsuite": "^5.28.0",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.6",
+    "swiper": "^9.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.1.0"
+  }
+}
