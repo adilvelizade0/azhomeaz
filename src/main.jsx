@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import Loader from "./pages/Loader/Loader.page.jsx";
 
 const Home = lazy(() => import("./pages/Home/Home.page.jsx"));
 const AdsDetails = lazy(() => import("./pages/AdsDetails/AdsDetails.page.jsx"));
@@ -21,7 +22,7 @@ const browserRouter = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Home />
           </Suspense>
         ),
@@ -29,7 +30,7 @@ const browserRouter = createBrowserRouter([
       {
         path: "/ads/:id",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <AdsDetails />
           </Suspense>
         ),
@@ -37,7 +38,7 @@ const browserRouter = createBrowserRouter([
       {
         path: "/search/:searchTerm",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <SearchPage />
           </Suspense>
         ),
@@ -45,7 +46,7 @@ const browserRouter = createBrowserRouter([
       {
         path: "/search",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <SearchPage />
           </Suspense>
         ),
@@ -53,7 +54,7 @@ const browserRouter = createBrowserRouter([
       {
         path: "/create",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <CreateAds />
           </Suspense>
         ),
