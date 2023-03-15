@@ -16,6 +16,7 @@ import getUser from "./actions/user/getUser.action.js";
 import Loader from "./pages/Loader/Loader.page.jsx";
 import getAllCities from "./actions/city/getAllCity.action.js";
 import getToken from "./actions/token/getToken.action.js";
+import Footer from "./components/Footer/Footer.component.jsx";
 
 function App({ getUser, user, getToken, getAllCities, token }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,6 +99,7 @@ function App({ getUser, user, getToken, getAllCities, token }) {
               activeTextColor="#241f65"
             />
           </div>
+          <Footer />
         </>
       )}
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import PageBannerWrapper from "./PageBanner.styles.js";
 import pagebanner from "../../assets/pagebanner.jpg";
 import { Link } from "react-router-dom";
+import Instructions from "../../pages/Instructions/Instructions.page.jsx";
 
 const PageBanner = ({ page }) => {
   return (
@@ -13,8 +14,8 @@ const PageBanner = ({ page }) => {
       {page === "home" ? (
         <div className="nav h-100 d-flex pb-4 justify-content-center align-items-end align-items-lg-center">
           <Link to="/about">Haqqımızda</Link>
-          <a href="#">Qaydalar</a>
-          <a href="#">Təlimatlar</a>
+          <Link to="/rules">Qaydalar</Link>
+          <Link to="/instructions">Təlimatlar</Link>
           <Link to="/contact">Əlaqə</Link>
         </div>
       ) : (

@@ -7,6 +7,7 @@ import cityReducer from "./reducers/city/city.reducer.js";
 import userReducer from "./reducers/user/user.reducer.js";
 import contactReducer from "./reducers/contact/contact.reducer.js";
 import tokenReducer from "./reducers/token/token.reducer.js";
+import subscriberReducer from "./reducers/subscriber/subscriber.reducer.js";
 // Reducers
 import {
   signupReducer,
@@ -27,6 +28,7 @@ export default createStore(
     user: userReducer,
     contact: contactReducer,
     token: tokenReducer,
+    subscriber: subscriberReducer,
   }),
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );

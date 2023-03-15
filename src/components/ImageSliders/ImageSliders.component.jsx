@@ -21,6 +21,9 @@ const ImageSliders = ({
       image: "https://picsum.photos/800/400?img=2",
     },
   ],
+  isHighlighted = false,
+  isVip = false,
+  isPlatin = false,
 }) => {
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
@@ -67,17 +70,21 @@ const ImageSliders = ({
             anchorSelect="#platinum-anchor-element"
             content="Platin Elan"
           />
-          <div className="promotion-badge">
-            <img id="vip-anchor-element" src={crown} alt="crown" width={20} />
-          </div>
-          <div className="promotion-badge">
-            <img
-              id="platinum-anchor-element"
-              src={diamond}
-              alt="crown"
-              width={20}
-            />
-          </div>
+          {isVip && (
+            <div className="promotion-badge">
+              <img id="vip-anchor-element" src={crown} alt="crown" width={20} />
+            </div>
+          )}
+          {isPlatin && (
+            <div className="promotion-badge">
+              <img
+                id="platinum-anchor-element"
+                src={diamond}
+                alt="crown"
+                width={20}
+              />
+            </div>
+          )}
         </div>
         <PhotoProvider>
           <Slider

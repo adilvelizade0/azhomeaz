@@ -58,24 +58,19 @@ const AdsDetails = ({
 
   useEffect(() => {
     if (announcementInfo.success) {
-      const newData = {
-        ...announcementInfo.data,
-        ad_city: loadCity(announcementInfo.data.ad_city).name,
-      };
-      getUser(announcementInfo.data.ad_author);
-      setAnnouncement(newData);
+      setAnnouncement(announcementInfo.data);
     }
   }, [announcementInfo.success]);
 
-  useEffect(() => {
-    if (user.success) {
-      const newData = {
-        ...announcement,
-        ad_author: user.user,
-      };
-      setAnnouncement(newData);
-    }
-  }, [user.success]);
+  // useEffect(() => {
+  //   if (user.success) {
+  //     const newData = {
+  //       ...announcement,
+  //       ad_author: user.user,
+  //     };
+  //     setAnnouncement(newData);
+  //   }
+  // }, [user.success]);
 
   console.log(announcement);
 
@@ -112,7 +107,12 @@ const AdsDetails = ({
                 {announcement.ad_title}
               </h5>
             </div>
-            <ImageSliders images={announcement.images} />
+            <ImageSliders
+              isPlatin={announcement.is_platin}
+              isVip={announcement.is_vip}
+              isHighlighted={announcement.is_highlighted}
+              images={announcement.images}
+            />
           </div>
           <div className="col-lg-3 px-0">
             <div className="info px-3">
@@ -233,7 +233,9 @@ const AdsDetails = ({
       <div className="d-block d-lg-none px-4">
         <PlatinumAds />
       </div>
-      <SameAds />
+      <div className="pb-4">
+        <SameAds />
+      </div>
     </AdsDetailsContainer>
   );
 };

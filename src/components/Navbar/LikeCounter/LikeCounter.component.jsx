@@ -18,7 +18,7 @@ const LikeCounter = () => {
   return (
     <LikeCounterWrapper
       onClick={() => {
-        navigate(`/profile/${id}`, { state: { tab: 3 } });
+        navigate("/profile", { state: { tab: 3 } });
       }}
     >
       <div className="counter">{likeCount}</div>

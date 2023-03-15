@@ -15,7 +15,7 @@ const createAnnouncement = (data) => (dispatch) => {
   dispatch({ type: CREATE_ANNOUNCEMENT_PENDING });
   axios
     .post(
-      `${import.meta.env.VITE_BASE_URL}/announcement/list/`,
+      `${import.meta.env.VITE_BASE_URL}/announcement/create/`,
       data,
 
       {

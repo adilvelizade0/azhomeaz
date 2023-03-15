@@ -17,7 +17,7 @@ const NotificationCounter = () => {
   return (
     <NotificationCounterWrapper
       onClick={() => {
-        navigate(`/profile/${id}`, { state: { tab: 4 } });
+        navigate("/profile", { state: { tab: 4 } });
       }}
     >
       <div className="counter"></div>

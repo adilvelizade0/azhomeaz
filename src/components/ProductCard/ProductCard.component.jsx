@@ -21,7 +21,7 @@ const ProductCard = ({
     isVip: true,
     isPlatinum: true,
     isNew: true,
-    location: 0,
+    location: "Test",
     date: "16.03.2021",
     priceAgreement: false,
   },
@@ -29,7 +29,7 @@ const ProductCard = ({
   user,
 }) => {
   const [isFavorite, setIsFavorite] = useState(product.isFavorite);
-  const [address, setAddress] = useState("loading...");
+  // const [address, setAddress] = useState("loading...");
 
   const navigate = useNavigate();
 
@@ -41,16 +41,16 @@ const ProductCard = ({
     }
   };
 
-  useEffect(() => {
-    if (cities.success) {
-      const city = cities.data.find((city) => city.id === product.location);
-      if (city) {
-        setAddress(city.name);
-      } else {
-        setAddress("Yoxdur");
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (cities.success) {
+  //     const city = cities.data.find((city) => city.id === product.location);
+  //     if (city) {
+  //       setAddress(city.name);
+  //     } else {
+  //       setAddress("Yoxdur");
+  //     }
+  //   }
+  // }, []);
 
   return (
     <ProductCardWrapper>
@@ -74,7 +74,7 @@ const ProductCard = ({
                 <img
                   id="vip-anchor-element"
                   src={crown}
-                  className="me-2"
+                  className={product.isPlatinum ? "me-2" : ""}
                   alt="crown"
                   width={20}
                 />
@@ -134,7 +134,7 @@ const ProductCard = ({
           <div className="d-flex mt-2 align-items-center card-info">
             <div className="mb-sm-0 d-flex align-items-center me-1 me-md-2">
               <FaMapMarkerAlt size={16} className="me-1" />
-              <span>{address}</span>
+              <span>{product.location}</span>
             </div>
             <div className="d-flex align-items-center">
               <FaClock size={16} className="me-1" />

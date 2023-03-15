@@ -21,6 +21,10 @@ const SignIn = lazy(() => import("./pages/SignIn/SignIn.page.jsx"));
 const Test = lazy(() => import("./pages/Test/Test.page.jsx"));
 const Contact = lazy(() => import("./pages/Contact/Contact.page.jsx"));
 const About = lazy(() => import("./pages/About/About.page.jsx"));
+const Rules = lazy(() => import("./pages/Rules/Rules.page.jsx"));
+const Instructions = lazy(() =>
+  import("./pages/Instructions/Instructions.page.jsx")
+);
 
 const browserRouter = createBrowserRouter([
   {
@@ -84,6 +88,22 @@ const browserRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/rules",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Rules />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/instructions",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Instructions />
           </Suspense>
         ),
       },

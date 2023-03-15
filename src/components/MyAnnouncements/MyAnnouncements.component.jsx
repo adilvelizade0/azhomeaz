@@ -4,12 +4,7 @@ import ProductCard from "../ProductCard/ProductCard.component.jsx";
 import getAllAnnouncements from "../../actions/announcement/getAllAnnouncements.action.js";
 import { InfinitySpin } from "react-loader-spinner";
 
-const MyAnnouncements = ({
-  userId,
-  allAnnouncements,
-  getAllAnnouncements,
-  getCity,
-}) => {
+const MyAnnouncements = ({ userId, allAnnouncements, getAllAnnouncements }) => {
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,8 +14,9 @@ const MyAnnouncements = ({
 
   useEffect(() => {
     if (allAnnouncements.success) {
+      console.log(allAnnouncements.data);
       const filteredAnnouncements = allAnnouncements.data.filter(
-        (announcement) => announcement.ad_author === userId
+        (announcement) => announcement.ad_author.id === userId
       );
       setAnnouncements(filteredAnnouncements);
     }
@@ -62,6 +58,8 @@ const MyAnnouncements = ({
                     views: announcement.ad_views,
                     location: announcement.ad_city,
                     isNew: announcement.ad_is_new,
+                    isVip: announcement.is_vip,
+                    isPlatinum: announcement.is_platin,
                     priceAgreement: announcement.ad_price_agreement,
                   }}
                 />
