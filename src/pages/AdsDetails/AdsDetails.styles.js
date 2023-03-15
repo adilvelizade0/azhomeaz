@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const AdsDetailsContainer = styled.div`
+  overflow: hidden !important;
   .info {
     .services {
       background-color: #f1f3f7;

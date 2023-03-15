@@ -2,7 +2,7 @@ import React from "react";
 import NavbarContainer from "./Navbar.styles.js";
 import logo from "../../assets/logo.png";
 import SearchBar from "../SearchBar/SearchBar.component.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LikeCounter from "./LikeCounter/LikeCounter.component.jsx";
 import NotificationCounter from "./NotificationCounter/NotificationCounter.component.jsx";
 import AddButton from "./AddButton/AddButton.component.jsx";

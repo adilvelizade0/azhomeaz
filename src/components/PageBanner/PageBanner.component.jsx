@@ -12,10 +12,10 @@ const PageBanner = ({ page }) => {
 
       {page === "home" ? (
         <div className="nav h-100 d-flex pb-4 justify-content-center align-items-end align-items-lg-center">
-          <a href="#">Haqqımızda</a>
+          <Link to="/about">Haqqımızda</Link>
           <a href="#">Qaydalar</a>
           <a href="#">Təlimatlar</a>
-          <a href="#">Əlaqə</a>
+          <Link to="/contact">Əlaqə</Link>
         </div>
       ) : (
         <div className="nav h-100 d-flex pb-4 justify-content-center  align-items-center">

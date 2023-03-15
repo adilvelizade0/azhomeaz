@@ -17,6 +17,8 @@ const PlatinumAds = () => {
     autoplay: true,
     navigation: true,
     pagination: true,
+    slideCount: 8,
+    currentSlide: 0,
     rows: 2,
     nextArrow: <FiArrowRight color="#034EFDFF" className="arrow-right" />,
     prevArrow: <FiArrowLeft color="#034EFDFF" className="arrow-left" />,

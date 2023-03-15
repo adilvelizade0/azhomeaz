@@ -2,7 +2,7 @@
   --yellow: #ffe600;
   --black: #010101;
   --white: #fdfdfd;
-  --blue: #034efd;
+  --blue: #241f65;
   --gold: #ae8507;
   --bronze: #533e0d;
   --gray: #6575a2;
@@ -10,3 +10,8 @@
   --main-font: "Poppins", sans-serif;
   --secondary-font: "Inter", sans-serif;
 }
+
+body {
+  overflow-x: hidden !important;
+}
+/* #034efd*/

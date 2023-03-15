@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.component.jsx";
@@ -11,61 +11,112 @@ import { BsPersonFill } from "react-icons/bs";
 import { SiAddthis } from "react-icons/si";
 import { FaBell } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import getUser from "./actions/user/getUser.action.js";
+import Loader from "./pages/Loader/Loader.page.jsx";
+import getAllCities from "./actions/city/getAllCity.action.js";
+import getToken from "./actions/token/getToken.action.js";
 
-function App() {
+function App({ getUser, user, getToken, getAllCities, token }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [profileId, setProfileId] = useState("");
+  const [loading, setLoading] = useState(true);
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    getAllCities();
+    const session = JSON.parse(localStorage.getItem("session"));
+    if (session) {
+      getToken();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (token.success) {
+      const session = JSON.parse(localStorage.getItem("session"));
+      setProfileId(session.useId);
+      getUser(session.userId);
+    }
+  }, [token.success]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [user.success]);
 
   const navigate = useNavigate();
 
   const bottomNavItems = [
     {
-      title: "Home",
-      icon: <AiFillHome size={22} />,
-      activeIcon: <AiFillHome size={22} color="#034efd" />,
+      // title: "Home",
+      icon: <AiFillHome size={30} color="#241f65" />,
+      activeIcon: <AiFillHome size={30} color="#241f65" />,
       onClick: () => navigate("/"),
     },
     {
-      title: "Profil",
-      icon: <BsPersonFill size={22} />,
-      activeIcon: <BsPersonFill size={22} color="#034efd" />,
+      // title: "Profil",
+      icon: <BsPersonFill size={30} color="#241f65" />,
+      activeIcon: <BsPersonFill size={30} color="#241f65" />,
+      onClick: () => navigate("/profile"),
     },
     {
-      title: "Elan Yarat",
-      icon: <SiAddthis size={22} />,
-      activeIcon: <SiAddthis size={22} color="#034efd" />,
+      // title: "Elan Yarat",
+      icon: <SiAddthis size={30} color="#241f65" />,
+      activeIcon: <SiAddthis size={30} color="#241f65" />,
       onClick: () => navigate("/create"),
     },
     {
-      title: "Bildirişlər",
-      icon: <FaBell size={22} />,
-      activeIcon: <FaBell size={22} color="#034efd" />,
+      // title: "Favorilər",
+      icon: <AiFillHeart size={30} color="#241f65" />,
+      activeIcon: <AiFillHeart size={30} color="#241f65" />,
+      onClick: () => navigate("/profile", { state: { tab: 3 } }),
     },
     {
-      title: "Favorilər",
-      icon: <AiFillHeart size={22} />,
-      activeIcon: <AiFillHeart size={22} color="#034efd" />,
+      // title: "Bildirişlər",
+      icon: <FaBell size={30} color="#241f65" />,
+      activeIcon: <FaBell size={30} color="#241f65" />,
+      onClick: () => navigate("/profile", { state: { tab: 4 } }),
     },
   ];
 
   return (
     <div className="App">
-      <Navbar toggle={toggleDrawer} />
-      <Outlet />
-      <Sidebar isOpen={isOpen} toggle={toggleDrawer} />
-      <div className="d-block position-relative d-lg-none">
-        <BottomNavigation
-          items={bottomNavItems}
-          defaultSelected={0}
-          onItemClick={(item) => console.log(item)}
-          activeBgColor="#ffe600"
-          activeTextColor="#034efd"
-        />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar toggle={toggleDrawer} />
+          <Outlet />
+          <Sidebar isOpen={isOpen} toggle={toggleDrawer} />
+          <div className="d-block position-relative d-lg-none">
+            <BottomNavigation
+              items={bottomNavItems}
+              defaultSelected={0}
+              onItemClick={(item) => console.log(item)}
+              activeBgColor="#ffe600"
+              activeTextColor="#241f65"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    token: state.token,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getUser: (id) => dispatch(getUser(id)),
+    getToken: () => dispatch(getToken()),
+    getAllCities: () => dispatch(getAllCities()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

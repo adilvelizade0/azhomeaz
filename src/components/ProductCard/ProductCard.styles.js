@@ -65,6 +65,7 @@ const ProductCardWrapper = styled.div`
       }
 
       .card-img {
+        object-fit: cover;
         border-radius: 10px 10px 0 0;
         transition: all 0.3s ease-in-out;
       }

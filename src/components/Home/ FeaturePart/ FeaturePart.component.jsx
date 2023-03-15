@@ -29,6 +29,8 @@ const FeaturePart = () => {
     autoplay: true,
     navigation: true,
     pagination: true,
+    slideCount: 8,
+    currentSlide: 0,
     dots: true,
     dotsClass: "slick-dots slick-thumb",
     nextArrow: <FiArrowRight color="#034EFDFF" className="arrow-right" />,

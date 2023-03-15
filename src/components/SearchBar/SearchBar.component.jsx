@@ -10,12 +10,14 @@ const SearchFilter = ({
   handleFilterOptions,
   handleSearch,
   selectedCategory,
+  setIsOpened,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
   const data = ["Baku", "Absheron", "Sumgayit", "Xirdalan"].map((item) => ({
     label: item,
     value: item,
   }));
+
   const categories = [
     "Ustalar",
     "Fasad tikinti",
@@ -57,7 +59,7 @@ const SearchFilter = ({
               data={categories}
               size={"lg"}
               searchable={false}
-              value={selectedCategory ? selectedCategory : null}
+              // value={selectedCategory ? selectedCategory : null}
               className="select-picker"
               menuStyle={{
                 zIndex: 2000,
@@ -89,7 +91,7 @@ const SearchFilter = ({
                 placeholder="Alt kateqoriya seçin"
                 style={{ width: "100%" }}
                 onChange={(value) => {
-                  handleFilterOptions(value, "category");
+                  handleFilterOptions(value, "subcategory");
                 }}
               />
             </div>
@@ -120,6 +122,7 @@ const SearchFilter = ({
             <button
               onClick={() => {
                 handleSearch();
+                setIsOpened(false);
               }}
               className="btn btn-primary w-100 search-btn"
             >
@@ -139,6 +142,7 @@ const SearchBar = ({ selectedCategory }) => {
   const [filterOptions, setFilterOptions] = useState({
     city: "",
     category: selectedCategory ? selectedCategory : "",
+    subcategory: "",
     minPrice: 0,
     maxPrice: 0,
   });
@@ -159,7 +163,14 @@ const SearchBar = ({ selectedCategory }) => {
 
   return (
     <SearchBarContainer>
-      <BiSearch onClick={handleSearch} className="search-icon" size={25} />
+      <BiSearch
+        onClick={() => {
+          handleSearch();
+          setIsOpened(false);
+        }}
+        className="search-icon"
+        size={25}
+      />
       <Input
         value={searchValue}
         style={{
@@ -184,6 +195,7 @@ const SearchBar = ({ selectedCategory }) => {
       />
       <Collapse isOpened={isOpened}>
         <SearchFilter
+          setIsOpened={setIsOpened}
           selectedCategory={selectedCategory}
           handleSearch={handleSearch}
           handleFilterOptions={handleFilterOptions}

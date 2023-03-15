@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NotificationCounterWrapper from "./NotificationCounter.styles.js";
 import { FaBell } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import LikeCounterWrapper from "../LikeCounter/LikeCounter.styles.js";
+import { useNavigate } from "react-router-dom";
 
-const NotificationCounter = ({ notificationCounter }) => {
+const NotificationCounter = () => {
+  const [id, setId] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const session = JSON.parse(localStorage.getItem("session"));
+    if (session) {
+      setId(session.userId);
+    }
+  }, []);
+
   return (
-    <Link to="/notifications">
-      <NotificationCounterWrapper>
-        <div className="counter"></div>
-        <FaBell size={20} />
-      </NotificationCounterWrapper>
-    </Link>
+    <NotificationCounterWrapper
+      onClick={() => {
+        navigate(`/profile/${id}`, { state: { tab: 4 } });
+      }}
+    >
+      <div className="counter"></div>
+      <FaBell size={20} />
+    </NotificationCounterWrapper>
   );
 };
 

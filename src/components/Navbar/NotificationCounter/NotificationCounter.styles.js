@@ -12,6 +12,7 @@ const NotificationCounterWrapper = styled.div`
   border-radius: 50%;
   border: 2px solid var(--black);
   transition: all 0.3s;
+  cursor: pointer;
 
   //&:hover {
   //  cursor: pointer;
